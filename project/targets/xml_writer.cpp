@@ -1,4 +1,4 @@
-// $Id: xml_writer.cpp,v 1.12 2016/03/28 22:45:47 ist179042 Exp $ -*- c++ -*-
+// $Id: xml_writer.cpp,v 1.14 2016/04/11 19:01:38 ist179042 Exp $ -*- c++ -*-
 #include <string>
 #include "targets/xml_writer.h"
 #include "targets/type_checker.h"
@@ -144,8 +144,8 @@ void zu::xml_writer::do_rvalue_node(zu::rvalue_node * const node, int lvl) {
 //---------------------------------------------------------------------------
 
 void zu::xml_writer::do_lvalue_node(zu::lvalue_node * const node, int lvl) {
-  CHECK_TYPES(_compiler, _symtab, node);
-  processSimple(node, lvl);
+  /* CHECK_TYPES(_compiler, _symtab, node);
+  processSimple(node, lvl); FIXME */
 }
 
 //---------------------------------------------------------------------------
@@ -160,9 +160,6 @@ void zu::xml_writer::do_assignment_node(zu::assignment_node * const node, int lv
   closeTag(node, lvl);
 }
 
-void zu::xml_writer::do_variable_declaration_node(zu::variable_declaration_node * const node, int lvl) {
-  //FIXME
-}
 
 void zu::xml_writer::do_variable_node(zu::variable_node * const node, int lvl) {
   //FIXME

@@ -1,4 +1,4 @@
-// $Id: basic_ast_visitor.h,v 1.10 2016/03/18 16:27:51 ist179042 Exp $ -*- c++ -*-
+// $Id: basic_ast_visitor.h,v 1.11 2016/04/06 14:58:17 ist179042 Exp $ -*- c++ -*-
 #ifndef __ZU_BASIC_AST_VISITOR_H__
 #define __ZU_BASIC_AST_VISITOR_H__
 
@@ -107,7 +107,6 @@ public:
   virtual void do_println_node(zu::println_node * const node, int lvl) = 0;
   virtual void do_read_node(zu::read_node * const node, int lvl) = 0;
   virtual void do_assignment_node(zu::assignment_node * const node, int lvl) = 0;
-  virtual void do_variable_declaration_node(zu::variable_declaration_node * const node, int lvl) = 0;
   virtual void do_variable_node(zu::variable_node * const node, int lvl) = 0;
 
 public:

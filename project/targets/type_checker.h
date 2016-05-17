@@ -1,4 +1,4 @@
-// $Id: type_checker.h,v 1.11 2016/03/18 16:27:51 ist179042 Exp $ -*- c++ -*-
+// $Id: type_checker.h,v 1.12 2016/04/06 14:58:17 ist179042 Exp $ -*- c++ -*-
 #ifndef __ZU_SEMANTICS_TYPE_CHECKER_H__
 #define __ZU_SEMANTICS_TYPE_CHECKER_H__
 
@@ -93,7 +93,6 @@ namespace zu {
     void do_print_node(zu::print_node * const node, int lvl);
     void do_read_node(zu::read_node * const node, int lvl);
     void do_assignment_node(zu::assignment_node * const node, int lvl);
-    void do_variable_declaration_node(zu::variable_declaration_node * const node, int lvl);
     void do_variable_node(zu::variable_node * const node, int lvl);
 
   public:

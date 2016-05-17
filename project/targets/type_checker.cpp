@@ -1,4 +1,4 @@
-// $Id: type_checker.cpp,v 1.12 2016/03/28 22:45:47 ist179042 Exp $ -*- c++ -*-
+// $Id: type_checker.cpp,v 1.14 2016/04/11 19:01:38 ist179042 Exp $ -*- c++ -*-
 #include <string>
 #include "targets/type_checker.h"
 #include "ast/all.h"  // automatically generated
@@ -128,11 +128,11 @@ void zu::type_checker::do_rvalue_node(zu::rvalue_node * const node, int lvl) {
 //---------------------------------------------------------------------------
 
 void zu::type_checker::do_lvalue_node(zu::lvalue_node * const node, int lvl) {
-  const std::string &id = node->value();
+  /* const std::string &id = node->value();
   std::shared_ptr<zu::symbol> symbol = _symtab.find(id);
   if (symbol == nullptr) throw id + " undeclared";
-  // hackish stuff...
-  node->type(new basic_type(4, basic_type::TYPE_INT));
+  // hackish stuff..FIXME .
+  node->type(new basic_type(4, basic_type::TYPE_INT)); FIXME */
 }
 
 //---------------------------------------------------------------------------
@@ -142,10 +142,10 @@ void zu::type_checker::do_assignment_node(zu::assignment_node * const node, int 
 
   // DAVID: horrible hack!
   // (this is caused by Zu not having explicit variable declarations)
-  const std::string &id = node->lvalue()->value();
+ /* const std::string &id = node->lvalue()->value();
   if (!_symtab.find(id)) {
     _symtab.insert(id, std::make_shared<zu::symbol>(new basic_type(4, basic_type::TYPE_INT), id, -1)); // put in the symbol table
-  }
+  } FIXME */
 
   node->lvalue()->accept(this, lvl + 2);
   if (node->lvalue()->type()->name() != basic_type::TYPE_INT)
@@ -159,9 +159,6 @@ void zu::type_checker::do_assignment_node(zu::assignment_node * const node, int 
   node->type(new basic_type(4, basic_type::TYPE_INT));
 }
 
-void zu::type_checker::do_variable_declaration_node(zu::variable_declaration_node * const node, int lvl) {
-  //FIXME
-}
 
 void zu::type_checker::do_variable_node(zu::variable_node * const node, int lvl) {
   //FIXME

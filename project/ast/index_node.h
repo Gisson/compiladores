@@ -1,8 +1,9 @@
-// $Id: index_node.h,v 1.7 2016/04/04 23:09:39 ist179042 Exp $
+// $Id: index_node.h,v 1.9 2016/04/11 19:01:36 ist179042 Exp $
 #ifndef __ZU_INDEX_NODE_H__
 #define __ZU_INDEX_NODE_H__
 
 #include <cdk/ast/expression_node.h>
+#include "lvalue_node.h"
 #include <string>
 
 namespace zu {
@@ -10,18 +11,12 @@ namespace zu {
   /**
    * Class for index nodes
    */
-  class index_node: public lvalue_abstract_node {
+  class index_node: public lvalue_node {
 	cdk::expression_node *_index,*_pointer;
   public:
-    inline index_node(int lineno, const char *s,cdk::expression_node *index,cdk::expression_node *pointer) :
-    lvalue_abstract_node(lineno, s),_index(index),_pointer(pointer) {}
-
-	inline index_node(int lineno, const std::string &s,cdk::expression_node *index,cdk::expression_node *pointer) :
-	lvalue_abstract_node(lineno, s),_index(index),_pointer(pointer) {}
-
-	inline index_node(int lineno, const std::string *s,cdk::expression_node *index,cdk::expression_node *pointer) :
-	lvalue_abstract_node(lineno, *s) {}
-
+    inline index_node(int lineno,cdk::expression_node *index,cdk::expression_node *pointer) :
+    lvalue_node(lineno),_index(index),_pointer(pointer) {}
+	
 	inline cdk::expression_node* getIndex(){ return _index; }
 
 	inline cdk::expression_node* getPointer(){ return _pointer; }                                             

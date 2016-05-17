@@ -47,11 +47,9 @@ class if_else_node;
 class or_node; 
 class read_node; 
 class print_node; 
-class lvalue_abstract_node; 
 class lvalue_node; 
 class for_node; 
 class function_call_node; 
-class variable_declaration_node; 
 class and_node; 
 
 } // namespace zu
@@ -116,11 +114,9 @@ class and_node;
 #include "ast/or_node.h"
 #include "ast/read_node.h"
 #include "ast/print_node.h"
-#include "ast/lvalue_abstract_node.h"
 #include "ast/lvalue_node.h"
 #include "ast/for_node.h"
 #include "ast/function_call_node.h"
-#include "ast/variable_declaration_node.h"
 #include "ast/and_node.h"
 
 

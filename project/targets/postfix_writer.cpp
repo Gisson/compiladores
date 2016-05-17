@@ -1,4 +1,4 @@
-// $Id: postfix_writer.cpp,v 1.12 2016/03/28 22:45:46 ist179042 Exp $ -*- c++ -*-
+// $Id: postfix_writer.cpp,v 1.14 2016/04/11 19:01:38 ist179042 Exp $ -*- c++ -*-
 #include <string>
 #include <sstream>
 #include "targets/type_checker.h"
@@ -192,7 +192,7 @@ void zu::postfix_writer::do_rvalue_node(zu::rvalue_node * const node, int lvl) {
 void zu::postfix_writer::do_lvalue_node(zu::lvalue_node * const node, int lvl) {
   CHECK_TYPES(_compiler, _symtab, node);
   // simplified generation: all variables are global
-  _pf.ADDR(node->value());
+  //_pf.ADDR(node->value());
 }
 
 //---------------------------------------------------------------------------
@@ -202,7 +202,7 @@ void zu::postfix_writer::do_assignment_node(zu::assignment_node * const node, in
 
   // DAVID: horrible hack!
   // (this is caused by Zu not having explicit variable declarations)
-  const std::string &id = node->lvalue()->value();
+  /* const std::string &id = node->lvalue()->value();
   std::shared_ptr<zu::symbol> symbol = _symtab.find(id);
   if (symbol->value() == -1) {
     _pf.DATA(); // variables are all global and live in DATA
@@ -211,7 +211,7 @@ void zu::postfix_writer::do_assignment_node(zu::assignment_node * const node, in
     _pf.CONST(0); // initialize it to 0 (zero)
     _pf.TEXT(); // return to the TEXT segment
     symbol->value(0);
-  }
+  }   FIXME */
 
   node->rvalue()->accept(this, lvl); // determine the new value
   _pf.DUP();
@@ -219,9 +219,6 @@ void zu::postfix_writer::do_assignment_node(zu::assignment_node * const node, in
   _pf.STORE(); // store the value at address
 }
 
-void zu::postfix_writer::do_variable_declaration_node(zu::variable_declaration_node * const node, int lvl) {
-  //FIXME
-}
 
 void zu::postfix_writer::do_variable_node(zu::variable_node * const node, int lvl) {
   //FIXME
